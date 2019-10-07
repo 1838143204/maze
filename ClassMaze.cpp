@@ -11,15 +11,6 @@ void randomgo(node (*maze)[n],int x, int y,int *toward){
 	int t=toward[c1];
 	toward[c1]=toward[c2];
 	toward[c2]=t;//改变行进顺序
-	system("cls");
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++){
-			if(maze[i][j].GetState()==1)cout<<"#";
-			else cout<<" ";
-		}
-		cout<<endl;
-	}
-	Sleep(100);
 	while(i<4){
 		switch (toward[i]){
 		case 0:
