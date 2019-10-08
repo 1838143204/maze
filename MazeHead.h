@@ -1,4 +1,4 @@
-const int n = 30;
+const int n =49;
 
 class node{
 private:
