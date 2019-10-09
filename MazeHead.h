@@ -4,6 +4,7 @@ using namespace std;
 #define UP 1
 #define LEFT 2
 #define RIGHT 3 
+#define UNICODE_
 
 const int n =13;//n只能为奇数
 
@@ -35,7 +36,7 @@ public:
 	void ChangeRight(bool new_right){right=new_right;}
 	void ChangeUp(bool new_up){up=new_up;}
 	void ChangeDown(bool new_down){down=new_down;}
-	void AutoFlag(){state=up|right|down|left;};
+	void AutoFlag(){state=up+right+down+left;};
 };
 
 void randomgo(node (*maze)[n],int x, int y);

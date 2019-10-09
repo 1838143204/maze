@@ -1,7 +1,7 @@
 #include"MazeHead.h"
 
-bool find(node (*maze)[n],int x,int y,int lasttoward){
-    cout<<x<<' '<<y<<' ';
+bool find(node (*maze)[n],int x,int y,int towardlast){
+    // cout<<x<<' '<<y<<' ';
     if(x==n-1 && y==n-1){
         maze[x][y].ChangeFlag(1);
         return 1;
@@ -11,13 +11,13 @@ bool find(node (*maze)[n],int x,int y,int lasttoward){
         maze[x][y].ChangeFlag(0);//避免重复绕圈
         while (i < 4)
         {
-            if (i != lasttoward)//避免走回头路
+            if (i != towardlast)//避免走回头路
                 switch (i)
                 {
                 case DOWN:
                     if (x + 1 < n)
                     {
-                        cout<<"Down"<<' ';
+                        // cout<<"Down"<<' ';
                         if (maze[x + 1][y].GetFlag() == -1)
                         {
                             maze[x][y].ChangeDown(find(maze, x + 1, y, 1));
@@ -29,7 +29,7 @@ bool find(node (*maze)[n],int x,int y,int lasttoward){
                 case UP:
                     if (x - 1 >= 0)
                     {
-                        cout<<"Up"<<' ';
+                        // cout<<"Up"<<' ';
                         if (maze[x - 1][y].GetFlag() == -1)
                         {
                             maze[x][y].ChangeUp(find(maze, x - 1, y, 0));
@@ -41,7 +41,7 @@ bool find(node (*maze)[n],int x,int y,int lasttoward){
                 case LEFT:
                     if (y - 1 >= 0)
                     {
-                        cout<<"Left"<<' ';
+                        // cout<<"Left"<<' ';
                         if (maze[x][y - 1].GetFlag() == -1)
                         {
                             maze[x][y].ChangeLeft(find(maze, x, y - 1, 3));
@@ -53,7 +53,7 @@ bool find(node (*maze)[n],int x,int y,int lasttoward){
                 case RIGHT:
                     if (y + 1 < n)
                     {
-                        cout<<"Right"<<endl;
+                        // cout<<"Right"<<' ';
                         if (maze[x][y + 1].GetFlag() == -1)
                         {
                             maze[x][y].ChangeRight(find(maze, x, y + 1, 2));
@@ -68,5 +68,5 @@ bool find(node (*maze)[n],int x,int y,int lasttoward){
         maze[x][y].AutoFlag();
         return maze[x][y].GetFlag();
     }
-    cout<<endl;
+    // cout<<endl;
 }
