@@ -3,5 +3,9 @@
 int main(){
 	node maze[n][n];
 	CreatMaze(maze);
+	printmaze(maze);
+	find(maze,0,0,LEFT);
+	printmaze(maze);
+	cin.get();
 	return 0;
 }

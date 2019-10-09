@@ -1,4 +1,3 @@
-#include<iostream>
 #include<time.h>
 #include<windows.h>
 #include"MazeHead.h"
@@ -13,31 +12,31 @@ void randomgo(node (*maze)[n],int x, int y,int *toward){
 	toward[c2]=t;//改变行进顺序
 	while(i<4){
 		switch (toward[i]){
-		case 0:
+		case DOWN:
 			if(x+2<n&&maze[x+2][y].GetState()==1){
-				maze[x+1][y].ChangeState(0);
-				maze[x+2][y].ChangeState(0);
+				maze[x+1][y].ChangeState();
+				maze[x+2][y].ChangeState();
 				randomgo(maze,x+2,y,toward);
 			}
 			break;
-		case 1:
+		case UP:
 			if(x-2>=0&&maze[x-2][y].GetState()==1){
-				maze[x-1][y].ChangeState(0);
-				maze[x-2][y].ChangeState(0);
+				maze[x-1][y].ChangeState();
+				maze[x-2][y].ChangeState();
 				randomgo(maze,x-2,y,toward);
 			}
 			break;
-		case 2:
+		case LEFT:
 			if(y-2>=0&&maze[x][y-2].GetState()==1){
-				maze[x][y-1].ChangeState(0);
-				maze[x][y-2].ChangeState(0);
+				maze[x][y-1].ChangeState();
+				maze[x][y-2].ChangeState();
 				randomgo(maze,x,y-2,toward);
 			}
 			break;
-		case 3:
+		case RIGHT:
 			if(y+2<n&&maze[x][y+2].GetState()==1){
-				maze[x][y+1].ChangeState(0);
-				maze[x][y+2].ChangeState(0);
+				maze[x][y+1].ChangeState();
+				maze[x][y+2].ChangeState();
 				randomgo(maze,x,y+2,toward);
 			}
 			break;
@@ -47,18 +46,21 @@ void randomgo(node (*maze)[n],int x, int y,int *toward){
 }
 
 void CreatMaze(node (*maze)[n]){
+	bool flag=0;
 	int toward[4]={0,1,2,3};
 	srand(time(NULL));
-	maze[n/2][n/2].ChangeState(0);
+	maze[n/2][n/2].ChangeState();
 	randomgo(maze,n/2,n/2,toward);
-	for(int i=0;i<n+2;i++){
-		for(int j=0;j<n+2;j++){
-			if(i==0||i==n+1||j==0||j==n+1)cout<<"#";
-			else{
-				if(maze[i-1][j-1].GetState()==1)cout<<"#";
-				else cout<<" ";
-			}
-		}		
-		cout<<"\n";
-	}
+	if (maze[0][0].GetState() == 1)
+	{
+		maze[0][0].ChangeState();
+		if (maze[0][1].GetState() != 0 && maze[1][0].GetState() != 0)
+			maze[0][1].ChangeState();
+	}//入口处理
+	if (maze[n-1][n-1].GetState() == 1)
+	{
+		maze[n-1][n-1].ChangeState();
+		if (maze[n-1][n-2].GetState() != 0 && maze[n-2][n-1].GetState() != 0)
+			maze[n-1][n-2].ChangeState();
+	}//出口处理
 }
