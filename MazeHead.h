@@ -1,11 +1,10 @@
 #include <iostream>
+#include <windows.h>
 using namespace std;
 #define DOWN 0
 #define UP 1
 #define LEFT 2
 #define RIGHT 3 
-#define UNICODE_
-
 const int n =13;//n只能为奇数
 
 class node{
