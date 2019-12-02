@@ -1,16 +1,17 @@
 #include"MazeHead.h"
-
-void printmaze(node (*maze)[n]){
+extern node maze[n][n];
+void printmaze(){
     system("cls");
     for (int i = 0; i < n + 2; i++)
     {
         for (int j = 0; j < n + 2; j++)
         {
-            if(i==1&&j==0||i==n&&j==n+1)cout<<"[]";//出入口
+            if(i==1&&j==0||i==n&&j==n+1)cout<<"[ ]";//出入口
             else if (i == 0 || i == n + 1 || j == 0 || j == n + 1)
-                cout << "[]";
-            else if(maze[i-1][j-1].GetState()==1) cout<<"[]";
-            else cout<<"  ";
+                cout << "[ ]";
+            else if(maze[i-1][j-1].GetState()==1) cout<<"[#]";
+            else
+                cout << " " << maze[i - 1][j - 1].step << " ";
             // else
             // {
             //     if (maze[i - 1][j - 1].GetState() == 1)

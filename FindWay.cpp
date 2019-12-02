@@ -1,6 +1,6 @@
 #include"MazeHead.h"
-
-bool find(node (*maze)[n],int x,int y,int towardlast){
+extern node maze[n][n];
+bool find(int x,int y,int towardlast){
     // cout<<x<<' '<<y<<' ';
     if(x==n-1 && y==n-1){
         maze[x][y].ChangeFlag(1);
@@ -20,7 +20,7 @@ bool find(node (*maze)[n],int x,int y,int towardlast){
                         // cout<<"Down"<<' ';
                         if (maze[x + 1][y].GetFlag() == -1)
                         {
-                            maze[x][y].ChangeDown(find(maze, x + 1, y, 1));
+                            maze[x][y].ChangeDown(find( x + 1, y, 1));
                         }
                         else
                             maze[x][y].ChangeDown(maze[x + 1][y].GetFlag());
@@ -32,7 +32,7 @@ bool find(node (*maze)[n],int x,int y,int towardlast){
                         // cout<<"Up"<<' ';
                         if (maze[x - 1][y].GetFlag() == -1)
                         {
-                            maze[x][y].ChangeUp(find(maze, x - 1, y, 0));
+                            maze[x][y].ChangeUp(find( x - 1, y, 0));
                         }
                         else
                             maze[x][y].ChangeUp(maze[x - 1][y].GetFlag());
@@ -44,7 +44,7 @@ bool find(node (*maze)[n],int x,int y,int towardlast){
                         // cout<<"Left"<<' ';
                         if (maze[x][y - 1].GetFlag() == -1)
                         {
-                            maze[x][y].ChangeLeft(find(maze, x, y - 1, 3));
+                            maze[x][y].ChangeLeft(find(x, y - 1, 3));
                         }
                         else
                             maze[x][y].ChangeLeft(maze[x][y - 1].GetFlag());
@@ -56,7 +56,7 @@ bool find(node (*maze)[n],int x,int y,int towardlast){
                         // cout<<"Right"<<' ';
                         if (maze[x][y + 1].GetFlag() == -1)
                         {
-                            maze[x][y].ChangeRight(find(maze, x, y + 1, 2));
+                            maze[x][y].ChangeRight(find(x, y + 1, 2));
                         }
                         else
                             maze[x][y].ChangeRight(maze[x][y + 1].GetFlag());
