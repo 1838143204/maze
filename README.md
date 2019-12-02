@@ -1,9 +1,3 @@
-# <center>迷宫实验报告
-
-#### <center>小组成员:刘福炜 李雨豪 赖发尧</center>
-
-[<center>GitHub传送门</center>](https://github.com/1838143204/maze)
-
 <font size=5>实验内容简介</font>
 
 > 基本要求:
