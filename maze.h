@@ -32,11 +32,11 @@ public:
 	}//创建迷宫路径,将改为通路的节点,设置flag为-1,表示可探索但未探索
 	int GetFlag(){return flag;}
 	void ChangeFlag(bool new_flag){flag=new_flag;}
-	// void ChangeLeft(bool new_left){left=new_left;}
-	// void ChangeRight(bool new_right){right=new_right;}
-	// void ChangeUp(bool new_up){up=new_up;}
-	// void ChangeDown(bool new_down){down=new_down;}
-	// void AutoFlag(){state=up+right+down+left;};
+	void ChangeLeft(bool new_left){left=new_left;}
+	void ChangeRight(bool new_right){right=new_right;}
+	void ChangeUp(bool new_up){up=new_up;}
+	void ChangeDown(bool new_down){down=new_down;}
+	void AutoFlag(){state=up+right+down+left;};
 };
 
 void randomgo(int x, int y);

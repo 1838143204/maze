@@ -1,4 +1,4 @@
-#include"MazeHead.h"
+#include"maze.h"
 
 node maze[n][n];
 int main(){
