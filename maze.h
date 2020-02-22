@@ -5,7 +5,7 @@ using namespace std;
 #define UP 1
 #define LEFT 2
 #define RIGHT 3
-const int n =15;//n只能为奇数
+const int n =49;//n只能为奇数
 class node{
 private:
 	bool state;//表示该节点是否为通路
